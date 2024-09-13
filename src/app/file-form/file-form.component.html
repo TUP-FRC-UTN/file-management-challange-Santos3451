@@ -1,0 +1,25 @@
+<form (ngSubmit)="onSubmit()">
+    <label>
+      Nombre:
+      <input [(ngModel)]="newFile.name" name="name" required />
+    </label>
+    <label>
+      Fecha:
+      <input [(ngModel)]="newFile.creation" name="creation" type="date" />
+    </label>
+    <label>
+      Tipo de Archivo:
+      <select [(ngModel)]="newFile.type" name="type" required>
+        <option [ngValue]="FileType.FOLDER">Carpeta</option>
+        <option [ngValue]="FileType.FILE">Archivo</option>
+      </select>
+    </label>
+    <label>
+      Dueños:
+      <select multiple [(ngModel)]="newFile.owners" name="owners">
+        <option *ngFor="let owner of owners" [ngValue]="owner">{{ owner.name }}</option>
+      </select>
+    </label>
+    <button type="submit">Agregar</button>
+  </form>
+  

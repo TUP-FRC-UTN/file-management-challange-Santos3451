@@ -1,0 +1,19 @@
+<div>
+    <button (click)="handleDelete()">Eliminar</button>
+  
+    <ul>
+      <li *ngFor="let file of sortedFiles">
+        <input type="checkbox" (change)="toggleSelection(file)" />
+        <div [title]="file.name" class="file-item">
+          <div *ngIf="file.type === FileType.FOLDER">📁</div>
+          <div *ngIf="file.type === FileType.FILE">📄</div>
+          <div>{{ file.name.length > 10 ? file.name.slice(0, 10) + '...' : file.name }}</div>
+          <div *ngIf="file.owners.length > 0">
+            <img *ngFor="let owner of file.owners.slice(0, 3)" [src]="owner.avatarUrl" alt="{{ owner.name }}" class="owner-avatar" />
+            <div *ngIf="file.owners.length > 3" class="owner-count">+{{ file.owners.length - 3 }}</div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  

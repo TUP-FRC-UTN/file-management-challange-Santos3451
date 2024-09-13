@@ -1,1 +1,8 @@
-add code here!!
+<div>
+    <button (click)="showForm = !showForm">Nuevo</button>
+    
+    <app-file-list [files]="files" (deleteFiles)="handleFileDeletion($event)"></app-file-list>
+    
+    <app-file-form *ngIf="showForm" (fileCreated)="handleFileCreated($event)"></app-file-form>
+  </div>
+  
